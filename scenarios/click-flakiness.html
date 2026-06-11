@@ -1,0 +1,132 @@
+<!doctype html>
+<html><head><title>Click Flakiness Stress Page</title>
+<style>
+  body { font-family: -apple-system, sans-serif; padding: 1em; }
+  section { border: 1px solid #ccc; padding: 1em; margin: 1em 0; }
+  h2 { margin: 0 0 0.5em 0; font-size: 1em; color: #333; }
+  .result { color: green; font-weight: bold; }
+  .below-fold { margin-top: 2000px; }
+  .scroll-box { height: 200px; overflow-y: scroll; border: 1px solid #888; padding: 1em; }
+  .scroll-box .filler { height: 1500px; }
+  .stacked { position: relative; }
+  .stacked .behind, .stacked .front {
+    position: absolute; top: 0; left: 0;
+    width: 100px; height: 50px; padding: 1em;
+  }
+  .stacked .behind { background: pink; z-index: 1; }
+  .stacked .front  { background: lightblue; z-index: 5; }
+  button[disabled] { opacity: 0.5; }
+  .fadein { animation: fadein 0.5s ease-in; }
+  @keyframes fadein { from { opacity: 0; } to { opacity: 1; } }
+</style>
+</head>
+<body>
+<h1>Click Flakiness Stress Page</h1>
+<p>Each section exercises one realistic click failure mode. The button updates the result element on click.</p>
+
+<!-- 1: Normal button (control) -->
+<section id="s1">
+  <h2>1. Normal button (control)</h2>
+  <button data-tag="btn-normal" onclick="document.getElementById('r1').textContent='clicked'">Click me</button>
+  <span class="result" id="r1">not-clicked</span>
+</section>
+
+<!-- 2: Button BELOW the fold — needs scrollIntoView -->
+<div class="below-fold">
+<section id="s2">
+  <h2>2. Below-fold button — needs scroll</h2>
+  <button data-tag="btn-below-fold" onclick="document.getElementById('r2').textContent='clicked'">Click me</button>
+  <span class="result" id="r2">not-clicked</span>
+</section>
+</div>
+
+<!-- 3: Animated/fade-in button -->
+<section id="s3">
+  <h2>3. Animated entrance button</h2>
+  <button class="fadein" data-tag="btn-animated" onclick="document.getElementById('r3').textContent='clicked'">Click me</button>
+  <span class="result" id="r3">not-clicked</span>
+</section>
+
+<!-- 4: Disabled button — click should FAIL with a proper error -->
+<section id="s4">
+  <h2>4. Disabled button — click must fail, not silently succeed</h2>
+  <button disabled data-tag="btn-disabled" onclick="document.getElementById('r4').textContent='SHOULD-NOT-HAVE-CLICKED'">Disabled</button>
+  <span class="result" id="r4">not-clicked</span>
+</section>
+
+<!-- 5: Overlapping elements: front button should receive click -->
+<section id="s5">
+  <h2>5. Overlapping elements — front (z-index higher) should receive click</h2>
+  <div class="stacked">
+    <button class="behind" data-tag="btn-behind" onclick="document.getElementById('r5').textContent='WRONG-behind'">Behind</button>
+    <button class="front"  data-tag="btn-front"  onclick="document.getElementById('r5').textContent='clicked-front'">Front</button>
+  </div>
+  <br><br>
+  <span class="result" id="r5">not-clicked</span>
+</section>
+
+<!-- 6: Button inside a scrollable container — needs container scroll -->
+<section id="s6">
+  <h2>6. Button inside a scrollable container</h2>
+  <div class="scroll-box" id="scrollbox">
+    <div class="filler">scroll-down content...</div>
+    <button data-tag="btn-in-scroller" onclick="document.getElementById('r6').textContent='clicked'">Hidden until you scroll</button>
+  </div>
+  <span class="result" id="r6">not-clicked</span>
+</section>
+
+<!-- 7: SVG element click -->
+<section id="s7">
+  <h2>7. SVG element click</h2>
+  <svg width="120" height="60" xmlns="http://www.w3.org/2000/svg">
+    <rect data-tag="svg-rect" x="0" y="0" width="120" height="60" fill="lightcoral" onclick="document.getElementById('r7').textContent='clicked'"/>
+    <text x="40" y="35" fill="white">Click rect</text>
+  </svg>
+  <span class="result" id="r7">not-clicked</span>
+</section>
+
+<!-- 8: Click → fill → click flow (form submission) -->
+<section id="s8">
+  <h2>8. Click → fill → click form flow</h2>
+  <form id="form8" onsubmit="event.preventDefault(); document.getElementById('r8').textContent='submitted-'+document.getElementById('input8').value;">
+    <input id="input8" data-tag="input-step8" type="text" placeholder="type here">
+    <button type="submit" data-tag="btn-submit8">Submit form</button>
+  </form>
+  <span class="result" id="r8">not-clicked</span>
+</section>
+
+<!-- 9: Click handler that re-renders / removes button mid-click -->
+<section id="s9">
+  <h2>9. Button that disappears after click (re-render simulation)</h2>
+  <button data-tag="btn-removes-self" onclick="this.remove(); document.getElementById('r9').textContent='clicked-and-removed';">Click then disappear</button>
+  <span class="result" id="r9">not-clicked</span>
+</section>
+
+<!-- 10: Custom element / shadow DOM — button inside a web component -->
+<section id="s10">
+  <h2>10. Button inside a custom element (shadow DOM)</h2>
+  <my-widget id="widget10"></my-widget>
+  <span class="result" id="r10">not-clicked</span>
+  <script>
+    class MyWidget extends HTMLElement {
+      constructor() {
+        super();
+        const shadow = this.attachShadow({ mode: 'open' });
+        shadow.innerHTML = '<button data-tag="btn-in-shadow">Shadow button</button>';
+        shadow.querySelector('button').addEventListener('click', () => {
+          document.getElementById('r10').textContent = 'clicked-from-shadow';
+        });
+      }
+    }
+    customElements.define('my-widget', MyWidget);
+  </script>
+</section>
+
+<!-- 11: Double-click -->
+<section id="s11">
+  <h2>11. Double-click</h2>
+  <button data-tag="btn-dblclick" ondblclick="document.getElementById('r11').textContent='dbl-clicked';">Double-click me</button>
+  <span class="result" id="r11">not-clicked</span>
+</section>
+
+</body></html>
