@@ -1,0 +1,11 @@
+<!doctype html>
+<html><head><title>Iframe Parent</title></head>
+<body>
+  <h1>Parent Page</h1>
+  <p>This page hosts a sign-in form inside an iframe.</p>
+
+  <!-- Parent ALSO has a "Sign in" button to verify frameLocator targets iframe, not parent -->
+  <button data-parent-tag="parent-button">Sign in</button>
+
+  <iframe id="my-frame" src="iframe-child.html" width="500" height="300" style="border:1px solid #ccc"></iframe>
+</body></html>
