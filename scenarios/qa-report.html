@@ -1,0 +1,25 @@
+<!doctype html>
+<html><head><title>QA Report Reproduction</title></head>
+<body>
+  <h1>Forms Testing</h1>
+
+  <form id="contact">
+    <label for="first-name">First Name</label>
+    <input id="first-name" data-qa-tag="first-name-input">
+
+    <label for="last-name">Last Name</label>
+    <input id="last-name" data-qa-tag="last-name-input">
+
+    <label for="country">Country</label>
+    <select id="country" data-qa-tag="country-select">
+      <option>India</option>
+      <option>USA</option>
+      <option>UK</option>
+    </select>
+
+    <input type="checkbox" id="terms" data-qa-tag="terms-checkbox">
+    <label for="terms">I agree to the Terms</label>
+
+    <button type="submit" data-qa-tag="submit-button">Submit Form</button>
+  </form>
+</body></html>
