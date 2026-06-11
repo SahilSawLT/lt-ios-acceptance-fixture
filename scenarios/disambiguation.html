@@ -1,0 +1,21 @@
+<!doctype html>
+<html><head><title>Scenario 1: Disambiguation</title></head>
+<body>
+  <!-- Three "Welcome" headings at different levels + one explicit role=heading -->
+  <h2 data-tag="h2-welcome">Welcome</h2>
+  <h1 data-tag="h1-welcome">Welcome</h1>
+  <div role="heading" aria-level="3" data-tag="div-welcome">Welcome</div>
+
+  <!-- Three "Submit" buttons of different element types -->
+  <button data-tag="real-button">Submit</button>
+  <input type="submit" value="Submit" data-tag="input-submit">
+  <div role="button" data-tag="div-button">Submit</div>
+
+  <!-- Two different links named "Continue" -->
+  <a href="/path-a" data-tag="link-a">Continue</a>
+  <a href="/path-b" data-tag="link-b">Continue</a>
+
+  <!-- An element that LOOKS like it might match but shouldn't -->
+  <span data-tag="trap">Submit</span>      <!-- span isn't a button -->
+  <p data-tag="trap2">Welcome</p>           <!-- p isn't a heading -->
+</body></html>

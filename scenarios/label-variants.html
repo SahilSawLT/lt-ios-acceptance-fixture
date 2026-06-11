@@ -1,0 +1,23 @@
+<!doctype html>
+<html><head><title>Scenario 2: Label Variants</title></head>
+<body>
+  <!-- Form 1: explicit for=id -->
+  <label for="email-explicit">Email</label>
+  <input id="email-explicit" data-tag="explicit-for" type="email">
+
+  <!-- Form 2: nested input inside label -->
+  <label>Email <input id="email-nested" data-tag="nested-input"></label>
+
+  <!-- Form 3: aria-label attribute -->
+  <input id="email-aria-label" data-tag="aria-label" aria-label="Email">
+
+  <!-- Form 4: aria-labelledby pointing at another element with "Email" -->
+  <span id="email-labelledby-target">Email</span>
+  <input id="email-labelledby" data-tag="aria-labelledby" aria-labelledby="email-labelledby-target">
+
+  <!-- Trap: a label "Email" but for nothing  -->
+  <label>Email (but no input here)</label>
+
+  <!-- Trap: input with an unrelated label -->
+  <label for="other-input">Phone</label><input id="other-input" data-tag="trap-phone">
+</body></html>

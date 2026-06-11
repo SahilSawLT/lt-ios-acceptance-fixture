@@ -1,0 +1,38 @@
+<!doctype html>
+<html><head><title>Scenario 3: Nested Form</title></head>
+<body>
+  <form>
+    <fieldset>
+      <legend>Sign up</legend>
+      <div class="row">
+        <label for="username">Username</label>
+        <input id="username" data-tag="user-input">
+      </div>
+      <div class="row">
+        <label for="signup-pw">Password</label>
+        <input id="signup-pw" type="password" data-tag="signup-pw-input">
+      </div>
+      <div class="row">
+        <label for="signup-confirm">Confirm Password</label>
+        <input id="signup-confirm" type="password" data-tag="signup-confirm-input">
+      </div>
+      <button type="submit" data-tag="signup-btn">Submit</button>
+      <button type="reset" data-tag="reset-btn">Reset</button>
+    </fieldset>
+  </form>
+
+  <form>
+    <fieldset>
+      <legend>Sign in</legend>
+      <div class="row">
+        <label for="login-user">Username</label>
+        <input id="login-user" data-tag="login-user-input">
+      </div>
+      <div class="row">
+        <label for="login-pw">Password</label>
+        <input id="login-pw" type="password" data-tag="login-pw-input">
+      </div>
+      <button type="submit" data-tag="login-btn">Submit</button>
+    </fieldset>
+  </form>
+</body></html>

@@ -1,0 +1,24 @@
+<!doctype html>
+<html><head><title>Scenario 4: ARIA Edges</title></head>
+<body>
+  <!-- aria-label takes priority over innerText for accessible-name -->
+  <button data-tag="aria-wins" aria-label="Save">Save Document</button>
+
+  <!-- Element with text "Save" but role overridden away from button -->
+  <button role="presentation" data-tag="role-overridden">Save</button>
+
+  <!-- Real button with text "Save" -->
+  <button data-tag="plain-save">Save</button>
+
+  <!-- Heading via role on a non-heading tag -->
+  <div role="heading" aria-level="2" data-tag="div-heading">Title</div>
+
+  <!-- An actual h2 with same text -->
+  <h2 data-tag="real-h2">Title</h2>
+
+  <!-- A textbox via role on a non-input -->
+  <span role="textbox" data-tag="span-textbox" aria-label="Custom field">field content</span>
+
+  <!-- A regular text input — implicit role=textbox -->
+  <input type="text" aria-label="Custom field" data-tag="real-input">
+</body></html>
