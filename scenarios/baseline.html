@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LambdaTest iOS Baseline Fixture</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, Arial, sans-serif; max-width: 600px; margin: 1em auto; padding: 0 1em; }
+    label { display: block; margin: 0.6em 0 0.2em; font-weight: 600; }
+    input, select, textarea, button { font: inherit; padding: 0.4em; margin-bottom: 0.4em; min-width: 220px; }
+    button { padding: 0.5em 1em; cursor: pointer; }
+    .group { margin: 1.2em 0; padding: 0.8em; border: 1px solid #ddd; border-radius: 6px; }
+    .help { color: #666; font-size: 0.9em; }
+  </style>
+</head>
+<body>
+
+  <h1>Forms Testing</h1>
+  <p class="help">Self-hosted baseline fixture for the iOS Playwright fork's test.js. Every element here exists by design so the test is deterministic — no third-party site flake.</p>
+
+  <form id="signup" class="group" novalidate>
+    <h2>Sign up</h2>
+
+    <label for="first-name">First Name</label>
+    <input data-testid="first-name-input" id="first-name" name="firstName" placeholder="First Name" />
+
+    <label for="last-name">Last Name</label>
+    <input data-testid="last-name-input" id="last-name" name="lastName" placeholder="Last Name" />
+
+    <label for="email">Email</label>
+    <input data-testid="email-input" id="email" name="email" type="email" placeholder="you@example.com" />
+
+    <label for="password">Password</label>
+    <input data-testid="password-input" id="password" name="password" type="password" placeholder="Password" />
+
+    <label for="country">Country</label>
+    <select data-testid="country-select" id="country" name="country">
+      <option value="us">United States</option>
+      <option value="ca">Canada</option>
+      <option value="fr">France</option>
+      <option value="uk">United Kingdom</option>
+      <option value="de">Germany</option>
+      <option value="in">India</option>
+    </select>
+
+    <label for="bio">Bio</label>
+    <textarea data-testid="bio-input" id="bio" name="bio" rows="3" placeholder="Tell us about yourself"></textarea>
+
+    <div>
+      <input data-testid="terms" id="terms" type="checkbox" />
+      <label for="terms" style="display:inline; font-weight:normal;">I accept the terms</label>
+    </div>
+
+    <button data-testid="submit-btn" type="submit">Submit Form</button>
+    <button data-testid="reset-btn" type="reset">Reset</button>
+  </form>
+
+  <section class="group">
+    <h2>Login</h2>
+    <label for="login-user">Username</label>
+    <input data-testid="login-user-input" id="login-user" name="username" />
+
+    <label for="login-pw">Password</label>
+    <input data-testid="login-pw-input" id="login-pw" name="loginPassword" type="password" />
+
+    <button data-testid="login-btn">Sign in</button>
+  </section>
+
+  <section class="group">
+    <h2>Multi-select demo</h2>
+    <label for="fruits">Favorite fruits</label>
+    <select data-testid="fruits-multi" id="fruits" multiple>
+      <option value="apple">Apple</option>
+      <option value="banana">Banana</option>
+      <option value="cherry">Cherry</option>
+      <option value="durian">Durian</option>
+    </select>
+  </section>
+
+  <section class="group">
+    <h2>Index-based select</h2>
+    <label for="ordered">Ordered choices</label>
+    <select data-testid="ordered-select" id="ordered">
+      <option value="opt-0">First</option>
+      <option value="opt-1">Second</option>
+      <option value="opt-2">Third</option>
+      <option value="opt-3">Fourth</option>
+    </select>
+  </section>
+
+  <p>If you can read this, the fixture has loaded successfully.</p>
+
+</body>
+</html>
