@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Forms Testing — Comprehensive Fixture</title>
+  <style>
+    body { font-family: -apple-system, Arial, sans-serif; max-width: 700px; margin: 1em auto; padding: 0 1em; }
+    label { display: block; margin: 0.6em 0 0.2em; font-weight: 600; }
+    input, select, textarea, button { font: inherit; padding: 0.4em; margin-bottom: 0.4em; min-width: 220px; }
+    button { padding: 0.5em 1em; cursor: pointer; }
+    .group { margin: 1.2em 0; padding: 0.8em; border: 1px solid #ddd; border-radius: 6px; }
+    .mobile-menu-button { display: inline-block; padding: 4px 8px; background: #eef; }
+  </style>
+</head>
+<body>
+  <header>
+    <button class="mobile-menu-button" type="button">☰ Menu</button>
+  </header>
+
+  <h1>Forms Testing</h1>
+
+  <form id="signup" novalidate>
+    <label for="firstName">First Name</label>
+    <input data-testid="first-name-input" id="firstName" name="firstName" type="text" placeholder="Enter your first name" />
+
+    <label for="lastName">Last Name</label>
+    <input data-testid="last-name-input" id="lastName" name="lastName" type="text" placeholder="Enter your last name" />
+
+    <label for="email">Email</label>
+    <input data-testid="email-input" id="email" name="email" type="email" placeholder="you@example.com" />
+
+    <label for="password">Password</label>
+    <input data-testid="password-input" id="password" name="password" type="password" placeholder="Password" />
+
+    <label for="age">Age</label>
+    <input id="age" name="age" type="number" placeholder="30" />
+
+    <fieldset class="group">
+      <legend>Gender</legend>
+      <label><input data-testid="gender-male" type="radio" name="gender" value="male" /> Male</label>
+      <label><input data-testid="gender-female" type="radio" name="gender" value="female" /> Female</label>
+    </fieldset>
+
+    <fieldset class="group">
+      <legend>Interests</legend>
+      <label><input data-testid="interest-reading" type="checkbox" name="interest" value="reading" /> Reading</label>
+      <label><input data-testid="interest-gaming" type="checkbox" name="interest" value="gaming" /> Gaming</label>
+    </fieldset>
+
+    <label for="country">Country</label>
+    <select data-testid="country-select" id="country" name="country">
+      <option value="us">United States</option>
+      <option value="ca">Canada</option>
+      <option value="fr">France</option>
+      <option value="de">Germany</option>
+      <option value="uk">United Kingdom</option>
+      <option value="in">India</option>
+    </select>
+
+    <label for="bio">Bio</label>
+    <textarea data-testid="bio-input" id="bio" name="bio" rows="3" placeholder="Tell us about yourself"></textarea>
+
+    <label for="slider">Slider</label>
+    <input id="slider" name="slider" type="range" min="0" max="100" value="50" />
+
+    <div class="group">
+      <input data-testid="terms-checkbox" id="terms" type="checkbox" />
+      <label for="terms" style="display:inline; font-weight:normal;">I accept the terms</label>
+    </div>
+
+    <button data-testid="submit-button" id="submit-btn" type="submit">Submit Form</button>
+    <button data-testid="reset-button" id="reset-btn" type="reset">Reset</button>
+  </form>
+
+  <!-- Multi-select demo for selectOption tests -->
+  <section class="group">
+    <label for="fruits">Favorite fruits</label>
+    <select data-testid="fruits-multi" id="fruits" multiple>
+      <option value="apple">Apple</option>
+      <option value="banana">Banana</option>
+      <option value="cherry">Cherry</option>
+      <option value="durian">Durian</option>
+    </select>
+  </section>
+
+  <!-- Index-based select for selectOption by index -->
+  <section class="group">
+    <label for="ordered">Ordered choices</label>
+    <select data-testid="ordered-select" id="ordered">
+      <option value="opt-0">First</option>
+      <option value="opt-1">Second</option>
+      <option value="opt-2">Third</option>
+      <option value="opt-3">Fourth</option>
+    </select>
+  </section>
+
+</body>
+</html>

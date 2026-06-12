@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Swag Shop — Login</title>
+</head>
+<body>
+  <h1>Swag Shop Login</h1>
+  <form id="login_form" onsubmit="event.preventDefault(); if(document.getElementById('user-name').value==='standard_user' && document.getElementById('password').value==='secret_sauce'){ window.location.href='./shop-inventory.html'; }">
+    <input id="user-name" name="user-name" placeholder="Username" />
+    <input id="password" name="password" type="password" placeholder="Password" />
+    <input id="login-button" type="submit" value="Login" />
+  </form>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Swag Shop — Inventory</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 1em; }
+    .inventory_item { padding: 0.6em; border: 1px solid #ccc; margin: 0.4em 0; }
+    .shopping_cart { float: right; padding: 0.4em; }
+    .shopping_cart_badge { display: none; background: red; color: white; border-radius: 50%; padding: 2px 6px; }
+    .shopping_cart_badge.visible { display: inline-block; }
+  </style>
+</head>
+<body>
+  <div class="shopping_cart">🛒 <span id="cart-badge" class="shopping_cart_badge"></span></div>
+
+  <h1>Products</h1>
+
+  <div class="inventory_list">
+    <div class="inventory_item">
+      <div class="inventory_item_name">Sauce Labs Backpack</div>
+      <button class="add-to-cart" data-test="add-to-cart-sauce-labs-backpack">Add to cart</button>
+    </div>
+    <div class="inventory_item">
+      <div class="inventory_item_name">Sauce Labs Bike Light</div>
+      <button class="add-to-cart" data-test="add-to-cart-sauce-labs-bike-light">Add to cart</button>
+    </div>
+    <div class="inventory_item">
+      <div class="inventory_item_name">Sauce Labs Bolt T-Shirt</div>
+      <button class="add-to-cart" data-test="add-to-cart-sauce-labs-bolt-t-shirt">Add to cart</button>
+    </div>
+    <div class="inventory_item">
+      <div class="inventory_item_name">Sauce Labs Fleece Jacket</div>
+      <button class="add-to-cart" data-test="add-to-cart-sauce-labs-fleece-jacket">Add to cart</button>
+    </div>
+    <div class="inventory_item">
+      <div class="inventory_item_name">Sauce Labs Onesie</div>
+      <button class="add-to-cart" data-test="add-to-cart-sauce-labs-onesie">Add to cart</button>
+    </div>
+    <div class="inventory_item">
+      <div class="inventory_item_name">Test.allTheThings() T-Shirt (Red)</div>
+      <button class="add-to-cart" data-test="add-to-cart-test.allthethings()-t-shirt-(red)">Add to cart</button>
+    </div>
+  </div>
+
+  <script>
+    let cartCount = 0;
+    document.querySelectorAll('.add-to-cart').forEach(btn => {
+      btn.addEventListener('click', () => {
+        cartCount++;
+        const badge = document.getElementById('cart-badge');
+        badge.textContent = String(cartCount);
+        badge.classList.add('visible');
+      });
+    });
+  </script>
+</body>
+</html>

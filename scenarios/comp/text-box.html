@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8" /><title>Text Box Form</title></head>
+<body>
+  <h1>Text Box</h1>
+  <form id="userForm" onsubmit="event.preventDefault(); document.getElementById('output').style.display='block'; document.getElementById('out-name').textContent=document.getElementById('userName').value; document.getElementById('out-email').textContent=document.getElementById('userEmail').value;">
+    <label for="userName">Full Name</label>
+    <input id="userName" name="userName" placeholder="Full Name" />
+
+    <label for="userEmail">Email</label>
+    <input id="userEmail" name="userEmail" type="email" placeholder="name@example.com" />
+
+    <label for="currentAddress">Current Address</label>
+    <textarea id="currentAddress" name="currentAddress" placeholder="Current Address"></textarea>
+
+    <label for="permanentAddress">Permanent Address</label>
+    <textarea id="permanentAddress" name="permanentAddress" placeholder="Permanent Address"></textarea>
+
+    <button id="submit" type="submit">Submit</button>
+  </form>
+
+  <div id="output" style="display:none; margin-top:1em;">
+    <p>Name: <span id="out-name"></span></p>
+    <p>Email: <span id="out-email"></span></p>
+  </div>
+</body>
+</html>

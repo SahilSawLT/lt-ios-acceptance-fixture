@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8" /><title>Login</title>
+  <style>#flash { padding: 0.5em; margin-top: 1em; display:none; }
+  #flash.success { display:block; background: #dfd; }
+  #flash.error { display:block; background: #fdd; }</style>
+</head>
+<body>
+  <h1>Login Page</h1>
+  <form id="login" onsubmit="event.preventDefault(); var f=document.getElementById('flash'); if(document.getElementById('username').value==='tomsmith' && document.getElementById('password').value==='SuperSecretPassword!'){ f.className='success'; f.textContent='You logged into a secure area!'; } else { f.className='error'; f.textContent='Your username or password is invalid!'; }">
+    <label for="username">Username</label>
+    <input id="username" name="username" />
+    <label for="password">Password</label>
+    <input id="password" name="password" type="password" />
+    <button type="submit">Login</button>
+  </form>
+  <div id="flash"></div>
+</body>
+</html>
